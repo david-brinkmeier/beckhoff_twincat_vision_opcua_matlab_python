@@ -17,9 +17,13 @@ The variables are read using a [MATLAB and Python client implementation](/MATLAB
 - First, you should attempt an initial setup of a working OPC UA server using TwinCat.
 - I found these tutorials helpful: [1][opcua1], [2][opcua1], [3][opcua1].
 - Make sure you can connect using UaExpert!
+- **The Matlab/Python client expects to connect as Anonymous user using security policy 'none'**.
 
-  ### OPC UA Pitfalls
-  - test
+  ### TwinCat OPC UA Pitfalls
+  - After enabling the TF6100 OPC-UA License a system reboot is required.
+  - TwinCat connectivity project: Data Access -> PLC -> set ADS Port to 851
+  - TwinCat connectivity project: Set AMS Net ID to Localhost, i.e. 127.0.0.1.1, [yourNetworkIp].1.1 or specify the AMS Net ID of a remote Beckhoff IPC.
+  - In PLC - PLC_Project: Enable Target File [x] TMC File. This is required so that variables using identifier "{attribute 'OPC.UA.DA' := '1'}" are sent from PLC to the OPC UA server.
 
 
 [tcxae_download]: <https://www.beckhoff.com/en-en/support/download-finder/search-result/?search=TwinCAT%203%20download%20%7C%20eXtended%20Automation%20Engineering%20%28XAE%29>
