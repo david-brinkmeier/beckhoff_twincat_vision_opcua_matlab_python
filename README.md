@@ -24,10 +24,16 @@ The variables are read using a [MATLAB and Python client implementation](/MATLAB
   - (Here I highlight a few of the key settings you need to make, this information is contained in the tutorials linked above.)
   - In TcXaeShell: Enable View-Toolbars-OPC UA Configurator.
   - After enabling the TF6100 OPC-UA License a system reboot is required.
+  - The first connection to the OPC UA Server is "TOFU" (Trust-On-First-Use). Upon first connect you set credentials for access. Connect again and use the credentials you just specified.
   - TwinCAT connectivity project: Data Access -> PLC -> set ADS Port to 851
   - Right-click on TwinCAT taskbar icon -> Router -> Here is your AMS Net ID. Use this for the next step, or use localhost...
   - TwinCAT connectivity project: Set AMS Net ID to Localhost, i.e. 127.0.0.1.1, yourNetworkIp.1.1 or specify the AMS Net ID of a remote Beckhoff IPC.
   - In PLC - PLC_Project: Enable Target File [x] TMC File. This is required so that variables using identifier "{attribute 'OPC.UA.DA' := '1'}" are sent from PLC to the OPC UA server.
+  - For network access to the OPC UA server enable port forwarding for TCP port 4840, 4843.
+ 
+  ### TwinCAT OPC UA Server and MATLAB
+  - MATLAB disconnects after a few seconds and complains that the OPC UA Server changed from "Running" to "No Configuration". This does not occur using Python. Make the following changes in * *C:\TwinCAT\Functions\TF6100-OPC-UA\Win32\Server\TcUaServerConfig.xml* *:
+    ![](!doc/img2.png?raw=true)
  
 ## TwinCAT Vision: Getting started
 
@@ -37,8 +43,20 @@ The variables are read using a [MATLAB and Python client implementation](/MATLAB
 - The test images in folder [TwinCAT/TCFileSource_testIMG][/TwinCat/TCFileSource_testIMG] need to be loaded and streamed in **Vision-TCVision-FileSource1 - Tab "FileSourceControl"**. The arrays for the OPC UA communication expect 8bit INT images, when loading the images you will be asked by the dialog if you want these images to be interpreted as 8bit.
 
   ### TwinCAT Vision Pitfalls
-  - [You forgot to do the symbol initialization][tcvision2]. Every TwinCAT POU that accesses the images needs requires this.
+  - [You forgot to do the symbol initialization][tcvision2]. **Every** TwinCAT POU that accesses the images requires this!
+ 
+## Congratulations: You are now ready to run the sample project!
 
+- In TcXaeShell load the TwinCat project contained in the archive [TwinCAT/OPCua_TCVision.tnzip][/TwinCat/].
+- Configure the Image FileSource using the test images [TwinCAT/TCFileSource_testIMG][/TwinCat/TCFileSource_testIMG] as needed.
+- Ensure that the images can be viewed using the ADS Image Watch in POU MAIN and OPC_UA_IMG.
+- Ensure that the OPC Server is accessible using Anonymous User and variable from GVL_MAIN and GVL_OPCUA_Task can be seen.
+- UaExpert cannot display arrays with dimension >1.
+- The project uses the "MAIN" Task for image processing / viewing. Scalars and 1D-Arrays are distributed to the OPC UA Server as specified in GVL_MAIN.
+- Distributing images through OPC UA should be relegated to a second task running on another core at a lower priority. Native TC Vision variables of type ITcVnImage cannot be sent via OPC UA. Instead, OPC_UA_IMG uses function imageExportOPCua to fill 2D arrays with the ITcVnImage data which are then sent to the OPC UA Server.
+- The specification of the array size must be done manually in GVL_OPCUA_Task. If ITcVnImage and OPCUA_Image are not compatible, the arrays will not update.
+- Test the MATLAB client sample for the different variable types.
+- Test the Python client implementations. You may experience you have a different NodeId than provided in the code. Check UaExpert-Attribute of the variable you wish to watch.
 
 [tcxae_download]: <https://www.beckhoff.com/en-en/support/download-finder/search-result/?search=TwinCAT%203%20download%20%7C%20eXtended%20Automation%20Engineering%20%28XAE%29>
 [tcOPCua]: <https://www.beckhoff.com/en-en/products/automation/twincat/tfxxxx-twincat-3-functions/tf6xxx-connectivity/tf6100.html#tab_productdetails_3>
