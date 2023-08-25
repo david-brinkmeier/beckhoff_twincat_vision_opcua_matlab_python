@@ -3,7 +3,7 @@
 This is a full example project which includes a working sample project that publishes scalars and arrays using OPC UA including TwinCat Vision Images (derived from TwinCat Vision ITcVnImage images). TwinCat Vision is used to enable real-time processing of images acquired using GigE cameras directly on the PLC, but the data is not easily accessible / exported beyond the PLC environment. This sample project shows how to publish images to the built-in OPC UA Server.
 The variables are read using a [MATLAB and Python client implementation](/MATLAB_Python_Client).
 
-![](!docs/img/img1.png?raw=true)
+![](!docs/img1.png?raw=true)
 
 ## Prerequisites
 
@@ -14,6 +14,6 @@ The variables are read using a [MATLAB and Python client implementation](/MATLAB
 
 
 
-[tcxae_download] : <https://www.beckhoff.com/en-en/support/download-finder/search-result/?search=TwinCAT%203%20download%20%7C%20eXtended%20Automation%20Engineering%20%28XAE%29>
-[tcOPCua] : <https://www.beckhoff.com/en-en/products/automation/twincat/tfxxxx-twincat-3-functions/tf6xxx-connectivity/tf6100.html#tab_productdetails_3>
-[uaexpert] : <https://www.unified-automation.com/products/development-tools/uaexpert.html>
+[tcxae_download]: <https://www.beckhoff.com/en-en/support/download-finder/search-result/?search=TwinCAT%203%20download%20%7C%20eXtended%20Automation%20Engineering%20%28XAE%29>
+[tcOPCua]: <https://www.beckhoff.com/en-en/products/automation/twincat/tfxxxx-twincat-3-functions/tf6xxx-connectivity/tf6100.html#tab_productdetails_3>
+[uaexpert]: <https://www.unified-automation.com/products/development-tools/uaexpert.html>
