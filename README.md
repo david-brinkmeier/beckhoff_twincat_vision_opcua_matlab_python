@@ -3,7 +3,7 @@
 This is a full example project which includes a working sample project that publishes scalars and arrays using OPC UA including TwinCat Vision Images (derived from TwinCat Vision ITcVnImage images). TwinCat Vision is used to enable real-time processing of images acquired using GigE cameras directly on the PLC, but the data is not easily accessible / exported beyond the PLC environment. This sample project shows how to publish images to the built-in OPC UA Server.
 The variables are read using a [MATLAB and Python client implementation](/MATLAB_Python_Client).
 
-![](!docs/img1.png?raw=true)
+![](!doc/img1.png?raw=true)
 
 ## Prerequisites
 
