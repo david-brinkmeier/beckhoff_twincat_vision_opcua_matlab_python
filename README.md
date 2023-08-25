@@ -32,7 +32,7 @@ The variables are read using a [MATLAB and Python client implementation](/MATLAB
   - For network access to the OPC UA server enable port forwarding for TCP port 4840, 4843.
  
   ### TwinCAT OPC UA Server and MATLAB
-  - MATLAB disconnects after a few seconds and complains that the OPC UA Server changed from "Running" to "No Configuration". This does not occur using Python. Make the following changes in * *C:\TwinCAT\Functions\TF6100-OPC-UA\Win32\Server\TcUaServerConfig.xml* *:
+  - MATLAB disconnects after a few seconds and complains that the OPC UA Server changed from "Running" to "No Configuration". This does not occur using Python. Make the following changes in *C:\TwinCAT\Functions\TF6100-OPC-UA\Win32\Server\TcUaServerConfig.xml*:
     ![](!doc/img2.png?raw=true)
  
 ## TwinCAT Vision: Getting started
