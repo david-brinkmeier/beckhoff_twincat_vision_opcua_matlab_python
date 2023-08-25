@@ -17,8 +17,9 @@ The variables are read using a [MATLAB and Python client implementation](/MATLAB
 - First, you should attempt an initial setup of a working OPC UA server using TwinCat.
 - I found these tutorials helpful: [1][opcua1], [2][opcua1], [3][opcua1].
 - Make sure you can connect using UaExpert!
-### Pitfalls
-- test
+
+  ### OPC UA Pitfalls
+  - test
 
 
 [tcxae_download]: <https://www.beckhoff.com/en-en/support/download-finder/search-result/?search=TwinCAT%203%20download%20%7C%20eXtended%20Automation%20Engineering%20%28XAE%29>
