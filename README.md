@@ -40,7 +40,7 @@ The variables are read using a [MATLAB and Python client implementation](/MATLAB
 - Open TwinCAT-Windows-ADS Image watch in the menu bar. After a PLC restart you need to reload "PLC Ports".
 - The TwinCAT sample project in this repository uses a basic implementation of TwinCAT Vision nearly completely based on the [Beckhoff Example][tcvision1] using a FileSource for testing purposes. In a production environment the image source is a GigE camera and images are processed directly on the PLC.
 - If you are working with TwinCAT Vision for the first time, complete the linked tutorial first!
-- The test images in folder [TwinCAT/TCFileSource_testIMG][/TwinCat/TCFileSource_testIMG] need to be loaded and streamed in **Vision-TCVision-FileSource1 - Tab "FileSourceControl"**. The arrays for the OPC UA communication expect 8bit INT images, when loading the images you will be asked by the dialog if you want these images to be interpreted as 8bit.
+- The test images in folder [TwinCAT/TCFileSource_testIMG][TwinCat/TCFileSource_testIMG] need to be loaded and streamed in **Vision-TCVision-FileSource1 - Tab "FileSourceControl"**. The arrays for the OPC UA communication expect 8bit INT images, when loading the images you will be asked by the dialog if you want these images to be interpreted as 8bit.
 
   ### TwinCAT Vision Pitfalls
   - [You forgot to do the symbol initialization][tcvision2]. **Every** TwinCAT POU that accesses the images requires this!
